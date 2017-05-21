@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:http://www.piotr-majewski.com.pl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:http://www.piotr-majewski.com.pl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:http://www.piotr-majewski.com.pl">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="_odRequest">
+    <wsdl:part name="c" type="xsd:int" />
+    <wsdl:part name="d" type="xsd:int" />
+    <wsdl:part name="year" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="_odResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="wierszRequest">
+    <wsdl:part name="year" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="wierszResponse">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="ryczaltRequest">
+    <wsdl:part name="z" type="xsd:int" />
+    <wsdl:part name="x" type="xsd:int" />
+    <wsdl:part name="year" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="ryczaltResponse">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="wiersz_1Request">
+    <wsdl:part name="year" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="wiersz_1Response">
+    <wsdl:part name="return" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:portType name="Piotr_WSPortType">
+    <wsdl:operation name="_od">
+      <documentation>Baza danych</documentation>
+      <wsdl:input message="tns:_odRequest" />
+      <wsdl:output message="tns:_odResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="wiersz">
+      <documentation>Ilosc wierszy w bazie Podatek_dochodowy</documentation>
+      <wsdl:input message="tns:wierszRequest" />
+      <wsdl:output message="tns:wierszResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ryczalt">
+      <documentation>Ryczalt</documentation>
+      <wsdl:input message="tns:ryczaltRequest" />
+      <wsdl:output message="tns:ryczaltResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="wiersz_1">
+      <documentation>Ryczalt_ilosc_wierszy</documentation>
+      <wsdl:input message="tns:wiersz_1Request" />
+      <wsdl:output message="tns:wiersz_1Response" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Piotr_WSBinding" type="tns:Piotr_WSPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="_od">
+      <soap:operation soapAction="http://www.piotr-majewski.com.pl/wsdl.php/_od" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.piotr-majewski.com.pl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.piotr-majewski.com.pl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wiersz">
+      <soap:operation soapAction="http://www.piotr-majewski.com.pl/wsdl.php/wiersz" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.piotr-majewski.com.pl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.piotr-majewski.com.pl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ryczalt">
+      <soap:operation soapAction="http://www.piotr-majewski.com.pl/wsdl.php/ryczalt" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.piotr-majewski.com.pl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.piotr-majewski.com.pl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="wiersz_1">
+      <soap:operation soapAction="http://www.piotr-majewski.com.pl/wsdl.php/wiersz_1" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://www.piotr-majewski.com.pl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://www.piotr-majewski.com.pl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Piotr_WS">
+    <wsdl:port name="Piotr_WSPort" binding="tns:Piotr_WSBinding">
+      <soap:address location="http://www.piotr-majewski.com.pl/wsdl.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
